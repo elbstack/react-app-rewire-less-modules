@@ -16,7 +16,7 @@ function createRewireLess(lessLoaderOptions = {}) {
         return {
           ...rule,
           loader: [
-            ...cssRules.loader,
+            ...cssRules.use,
             { loader: "less-loader", options: lessLoaderOptions },
           ],
         };
