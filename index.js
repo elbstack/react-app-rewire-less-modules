@@ -13,7 +13,6 @@ function createRewireLess(lessLoaderOptions = {}) {
     fileLoader.exclude.push(lessExtension);
 
     const createRule = (rule, cssRules) => {
-      if (env === "production") {
         return {
           ...rule,
           loader: [
@@ -21,15 +20,6 @@ function createRewireLess(lessLoaderOptions = {}) {
             { loader: "less-loader", options: lessLoaderOptions },
           ],
         };
-      } else {
-        return {
-          ...rule,
-          use: [
-            ...cssRules.use,
-            { loader: "less-loader", options: lessLoaderOptions },
-          ],
-        };
-      }
     };
 
     const lessRules = createRule(
